@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "f5daa34f-33d4-4626-97e0-ebd3b95d38f6",
+		"name": "fabrial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_default_command",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6680/Commands/v1/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6680",
+					"path": [
+						"Commands",
+						"v1",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_custom_command",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:6680/Commands/v1/custom",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6680",
+					"path": [
+						"Commands",
+						"v1",
+						"custom"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
