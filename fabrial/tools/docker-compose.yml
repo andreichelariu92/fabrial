@@ -1,4 +1,4 @@
-version: "3"
+version: "3.5"
 services:
   fabrial:
     image: fabrial:latest
@@ -11,11 +11,3 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: fabrial_logs
-  fluentd:
-    image: fluentd:latest
-    volumes:
-      - ./fluentd/conf:/fluentd/etc
-    ports:
-      - "24224:24224"
-      - "9000:9000"
-      - "24224:24224/udp"
