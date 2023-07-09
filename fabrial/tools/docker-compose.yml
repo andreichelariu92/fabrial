@@ -1,13 +1,10 @@
-version: "3.5"
+version: "3.8"
 services:
   fabrial:
     image: fabrial:latest
     ports:
-      - "6680:80"
+       - target: 80
+         published: 6680
+         mode: host
     deploy:
       replicas: 1
-    logging:
-      driver: "fluentd"
-      options:
-        fluentd-address: localhost:24224
-        tag: fabrial_logs

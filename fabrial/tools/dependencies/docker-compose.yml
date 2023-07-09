@@ -1,9 +1,0 @@
-version: "3.5"
-services:
-  fluentd:
-    image: fluentd:latest
-    volumes:
-      - ./fluentd/conf:/fluentd/etc
-    ports:
-      - "24224:24224"
-      - "24224:24224/udp"
