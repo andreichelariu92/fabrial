@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using fabrial.ApplicationLayer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace fabrial.Controllers
 {
@@ -7,6 +9,13 @@ namespace fabrial.Controllers
     [ApiController]
     public class CommandsController : ControllerBase
     {
+        private readonly CreateSqlCommandUsecase createSqlCommandUsecase;
+
+        public CommandsController(CreateSqlCommandUsecase createSqlCommandUsecase)
+        {
+            this.createSqlCommandUsecase = createSqlCommandUsecase;
+        }
+
         [HttpPost("default")]
         public Task<IActionResult> CreateDefaultCommand()
         {
@@ -19,6 +28,18 @@ namespace fabrial.Controllers
         {
             var result = Created("custom", null);
             return Task.FromResult((IActionResult)result);
+        }
+
+        [HttpPost("sql")]
+        public Task<IActionResult> CreateSqlCommand([FromBody] string sql)
+        {
+            var result = createSqlCommandUsecase.Execute(sql);
+            if (result == null || result.Rows != null)
+            {
+                return Task.FromResult((IActionResult)StatusCode(500, result?.ErrorDetail));
+            }
+
+            return Task.FromResult((IActionResult)Ok(result.Rows));
         }
     }
 }
